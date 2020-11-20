@@ -1,0 +1,34 @@
+INSTALLATION
+------------
+
+pip install PyYAML 
+pip install xlrd 
+pip install xlwt 
+pip install ddt 
+
+python setup.py install
+python setup.py test 
+
+# Add NITA project versions (yaml-to-excel) to /etc/nita.properties
+cat VERSION.txt
+
+vi /etc/nita.properties
+
+Add verion if different to file.
+
+Example file:
+
+	# NITA configuration file
+	############################
+
+	# NITA Variables
+
+	NITA_USER=vagrant
+	NITA_HOME=/home/vagrant
+	NITA_GROUP=nita
+
+	# NITA Project versions
+	....
+	#yaml2xls=0.8
+	...
+

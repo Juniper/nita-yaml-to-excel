@@ -1,0 +1,38 @@
+Revision 0.7
+---------------
+* Bug Fix     : 1) Ordering issue has been fixed. 
+
+Revision 0.6
+---------------
+* Bug Fix     : 1) Test methods updated. 2) New testcases added
+
+Revision 0.5
+---------------
+* Bug Fix     : 1) Reference getting added for complex nested lists and dicts issue has been fixed
+	      	 
+Revision 0.4
+---------------
+* Enhancements: Yaml Order has been preserved using ordered dict instead of dict. Ordered dict dumper and loader have been used.
+* Bug Fix     : 1) Item duplication for list > dict > list items issue fixed.
+	          : 2) zero list item removed during xls to yaml parsing issue fixed.
+
+Revision 0.3
+---------------
+* Enhancements: Added support to grayout cell for different hierarchical elements in the spreadsheet.
+* Enhancement on column header formatting in the excel sheet.
+* Added support to pass destination spreadsheet file name as parameter.
+* Enhancements: Handled unsupported file formats and shows error message.
+* Enhancements: Longer texts are wrapped and column width adjusted are based on the text value.
+* Enhancements: Put borders for all cells in all the sheets.
+* Added few testcases with different YAML hierarchy.
+
+Revision 0.2
+---------------
+* Minor changes done in formatting values and code cleanup.
+* Created class in the python script to create module
+* Added functional test cases for the scripts
+
+Revision 0.1
+---------------
+
+* Initial version of python script for converting YAML files to Excel and Excel to YAML files.

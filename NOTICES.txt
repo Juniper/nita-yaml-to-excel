@@ -1,0 +1,33 @@
+NOTICES FOR THIRD-PARTY CODE/DEPENDENCIES
+
+Name: Python (Python Software Foundation).
+URL: https://www.python.org
+License: https://docs.python.org/3/license.html
+
+Name: PIP (Python Packaging Authority (PyPA)).
+URL: https://pip.pypa.io/en/stable/
+License: MIT License (MIT)
+
+Name: PyYAML (YAML parser and emitter for Python).
+URL: https://pypi.org/project/PyYAML/
+License: MIT License (MIT)
+
+Name: pyaml (PyYAML-based module to produce pretty and readable YAML-serialized data)
+URL: https://pypi.org/project/pyaml/
+License: WTFPL
+
+Name: xlrd (Library for developers to extract data from Microsoft Excel (tm) spreadsheet files)
+URL: https://pypi.org/project/xlrd/
+License: BSD License (BSD)
+
+Name: xlwt (Library to create spreadsheet files compatible with MS Excel 97/2000/XP/2003 XLS files, on any platform, with Python 2.6, 2.7, 3.3+)
+URL: https://pypi.org/project/xlwt/
+License: BSD License (BSD)
+
+Name: openpyxl (https://pypi.org/project/openpyxl/)
+URL: https://pypi.org/project/openpyxl/
+License: MIT License (MIT)
+
+Name: ddt (Data-Driven/Decorated Tests)
+URL: https://pypi.org/project/ddt/
+License: MIT License
