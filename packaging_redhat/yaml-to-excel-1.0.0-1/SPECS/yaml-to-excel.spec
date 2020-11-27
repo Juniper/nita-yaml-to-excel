@@ -23,7 +23,7 @@ Release:        1
 Summary:        Tool for converting excel spreadsheets to and from yaml
 Group:          Development/Tools
 BuildArch:      x86_64
-License:        https://support.juniper.net/support/legal/scriptlicense
+License:        Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
 URL:            https://www.juniper.net
 Source0:        %{name}-%{version}.tar.gz
 Requires:       python3
