@@ -1,4 +1,4 @@
-# Yaml-to-Excel
+# yaml-to-excel
 This project consists of the tools required for manipulating YAML files
 and Microsoft excel spreadsheet files.
 
