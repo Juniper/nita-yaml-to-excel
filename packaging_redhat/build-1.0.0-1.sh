@@ -50,7 +50,7 @@ export SOURCE_DIR=${PACKAGE}-${VERSION}-${RELEASE}/SOURCES
 # clear the source dir of /usr (leave /etc)
 rm -rf ${SOURCE_DIR}/${PACKAGE}-${VERSION}/usr
 pip3 uninstall -y ${PACKAGE} || true
-(cd ../..; PYTHONUSERBASE=$PWD/${PACKAGE}/packaging_redhat/${SOURCE_DIR}/${PACKAGE}-${VERSION} pip3 install --user ${PACKAGE}/)
+(cd ../..; PYTHONUSERBASE=$PWD/nita-${PACKAGE}/packaging_redhat/${SOURCE_DIR}/${PACKAGE}-${VERSION} pip3 install --user nita-${PACKAGE}/)
 
 mkdir -p ${SOURCE_DIR}/${PACKAGE}-${VERSION}/usr/local
 mv ${SOURCE_DIR}/${PACKAGE}-${VERSION}/bin ${SOURCE_DIR}/${PACKAGE}-${VERSION}/usr/local
