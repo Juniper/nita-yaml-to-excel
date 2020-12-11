@@ -39,7 +39,7 @@ rm -rf ${PACKAGE}-${VERSION}/etc
 rm -rf ${PACKAGE}-${VERSION}/usr
 rm -rf ${PACKAGE}-${VERSION}/lib
 pip3 uninstall -y ${PACKAGE} || true
-(cd ../..; PYTHONUSERBASE=$PWD/${PACKAGE}/packaging/${PACKAGE}-${VERSION} pip3 install --user nita-${PACKAGE}/)
+(cd ../..; PYTHONUSERBASE=$PWD/nita-${PACKAGE}/packaging/${PACKAGE}-${VERSION} pip3 install --user nita-${PACKAGE}/)
 
 mkdir -p ${PACKAGE}-${VERSION}/usr/local
 mv ${PACKAGE}-${VERSION}/bin ${PACKAGE}-${VERSION}/usr/local
