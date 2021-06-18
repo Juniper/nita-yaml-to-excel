@@ -22,8 +22,6 @@ import os
 import sys
 from collections import OrderedDict
 
-# import xlwt
-#import xlrd
 import yaml
 from openpyxl import load_workbook
 
@@ -469,10 +467,8 @@ class ExcelToYaml(object):
             key_header = 1
             value_header = 2
 
-#            for col in range(sheet.ncols):
             logging.debug("Sheet has %d columns", sheet.max_column)
             for col in range(1,sheet.max_column+1):
-#                columnHeader = sheet.cell(0, col).value
                 columnHeader = sheet.cell(1, col).value
                 logging.debug("Col = %d, Header= %s",col,columnHeader)
                 if columnHeader == "host":
@@ -482,16 +478,10 @@ class ExcelToYaml(object):
                 elif columnHeader == "value":
                     value_header = col
 
-#            for row in range(sheet.nrows):
             for row in range(1,sheet.max_row+1):
 
-#                if row != 0:
                 if row != 1:
                     logging.debug("Row = %d, HostsHead = %d,keyhead = %d, valhead = %d",row,hosts_header,key_header,value_header)
-#                    hostname = sheet.cell(row, hosts_header).value
-#                    key = sheet.cell(row, key_header).value
-#                    value = self.parse_cell_value(
-#                        sheet.cell(row, value_header).value)
                     hostname = sheet.cell(row, hosts_header).value
                     key = sheet.cell(row, key_header).value
                     value = self.parse_cell_value(
@@ -529,14 +519,12 @@ class ExcelToYaml(object):
             keys = []
             values = []
             keys_count = 0
-#            for row in range(1,sheet.nrow):
             for row in range(1,sheet.max_row+1):
                 is_header_row = False
                 i = 0
                 hostname = ""
                 array_data = OrderedDict()
                 empty_value_count = 0
-#                for col in range(1,sheet.ncols):
                 for col in range(1,sheet.max_column+1):
                     cell_value = sheet.cell(row, col).value
                     if cell_value == "host":
@@ -591,12 +579,9 @@ class ExcelToYaml(object):
 
     def convert_data(self):
 
-#        workbook = xlrd.open_workbook(self.workbook_name)
         workbook = load_workbook(self.workbook_name)
-#        logging.debug(workbook.sheet_names())
         logging.debug(workbook.sheetnames)
 
-#        for sheet_name in workbook.sheet_names():
         for sheet_name in workbook.sheetnames:
 
             logging.info("Processing sheet %s ", sheet_name)
