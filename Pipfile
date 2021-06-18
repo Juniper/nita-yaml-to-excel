@@ -8,7 +8,7 @@ pyaml = "*"
 xlwt = "*"
 openpyxl = "*"
 pyyaml = "*"
-xlrd = "==1.1.0"
+xlrd = "*"
 
 [dev-packages]
 pylint = "*"
