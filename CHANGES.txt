@@ -1,3 +1,8 @@
+Revision 0.8
+---------------
+Updated pyyaml to 5.4.1
+Updated xls2yaml.py script to use openpyxl rather than xlrd. Old version for XLS source files only is xls2yaml-xlrd.py but should not be used for xlsx files.
+
 Revision 0.7
 ---------------
 * Bug Fix     : 1) Ordering issue has been fixed. 

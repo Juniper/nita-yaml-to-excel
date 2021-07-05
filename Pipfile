@@ -7,6 +7,7 @@ name = "pypi"
 pyaml = "*"
 xlwt = "*"
 openpyxl = "*"
+pyyaml = "*"
 xlrd = "*"
 
 [dev-packages]
