@@ -44,6 +44,6 @@ pip3 uninstall -y ${PACKAGE} || true
 mkdir -p ${PACKAGE}-${VERSION}/usr/local
 mv ${PACKAGE}-${VERSION}/bin ${PACKAGE}-${VERSION}/usr/local
 mv ${PACKAGE}-${VERSION}/lib ${PACKAGE}-${VERSION}/usr/local
-mv ${PACKAGE}-${VERSION}/usr/local/lib/python3.6/site-packages ${PACKAGE}-${VERSION}/usr/local/lib/python3.6/dist-packages
+mv ${PACKAGE}-${VERSION}/usr/local/lib/python3.8/site-packages ${PACKAGE}-${VERSION}/usr/local/lib/python3.8/dist-packages
 
 dpkg-deb --build ${PACKAGE}-${VERSION}

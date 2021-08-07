@@ -55,7 +55,7 @@ pip3 uninstall -y ${PACKAGE} || true
 mkdir -p ${SOURCE_DIR}/${PACKAGE}-${VERSION}/usr/local
 mv ${SOURCE_DIR}/${PACKAGE}-${VERSION}/bin ${SOURCE_DIR}/${PACKAGE}-${VERSION}/usr/local
 mv ${SOURCE_DIR}/${PACKAGE}-${VERSION}/lib ${SOURCE_DIR}/${PACKAGE}-${VERSION}/usr/local
-#mv ${SOURCE_DIR}/${PACKAGE}-${VERSION}/usr/local/lib/python3.6/site-packages ${SOURCE_DIR}/${PACKAGE}-${VERSION}/usr/local/lib/python3.6/dist-packages
+#mv ${SOURCE_DIR}/${PACKAGE}-${VERSION}/usr/local/lib/python3.8/site-packages ${SOURCE_DIR}/${PACKAGE}-${VERSION}/usr/local/lib/python3.8/dist-packages
 
 # Create a tarball of with source
 (
