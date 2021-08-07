@@ -3,7 +3,7 @@
 # ********************************************************
 #
 # Project: nita-yaml-to-excel
-# Version: 20.10
+# Version: 21.7
 #
 # Copyright (c) Juniper Networks, Inc., 2020. All rights reserved.
 #
@@ -26,7 +26,7 @@ config = {
     'url': 'https://ps-network-automation.visualstudio.com/NITA/_git/yaml-to-excel',
     'download_url': 'https://artifactory.aslab.juniper.net/artifactory/api/pypi/ps-pypi/simple/yaml-to-excel/',
     'author_email': 'dsek@juniper.net',
-    'version': '1.0.0',
+    'version': '2.0.0',
     'install_requires': ['PyYAML', 'xlrd', 'xlwt', 'openpyxl'],
     'packages': ['yamltoexcel'],
     'scripts': ['yamltoexcel/xls2yaml.py', 'yamltoexcel/yaml2xls.py'],

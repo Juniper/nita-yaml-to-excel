@@ -36,7 +36,7 @@ If you do not have the the required package files for your system, .deb for Ubun
 If you have been provided with the .deb package file run the following command:
 
 ```bash
-sudo apt-get install ./yaml-to-excel-1.0.0-1.deb
+sudo apt-get install ./yaml-to-excel-2.0.0-1.deb
 ```
 
 ### Centos
@@ -44,5 +44,5 @@ sudo apt-get install ./yaml-to-excel-1.0.0-1.deb
 If you have been provided with the .rpm package file run the following command:
 
 ```bash
-sudo yum install ./yaml-to-excel-1.0.0-1.rpm
+sudo yum install ./yaml-to-excel-2.0.0-1.rpm
 ```

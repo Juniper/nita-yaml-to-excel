@@ -3,7 +3,7 @@
 # ********************************************************
 #
 # Project: nita-yaml-to-excel
-# Version: 20.10
+# Version: 21.7
 #
 # Copyright (c) Juniper Networks, Inc., 2020. All rights reserved.
 #
@@ -19,7 +19,7 @@
 set -e
 
 PACKAGE=yaml-to-excel
-VERSION="1.0.0-1"
+VERSION="2.0.0-1"
 
 # cleanup version if the directory name is used
 VTMP="${VERSION#$PACKAGE-}"

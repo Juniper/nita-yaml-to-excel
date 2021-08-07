@@ -1,5 +1,5 @@
 Package: yaml-to-excel
-Version: 1.0.0-1
+Version: 2.0.0-1
 Source: yaml-to-excel
 Section: contrib/python
 Priority: extra

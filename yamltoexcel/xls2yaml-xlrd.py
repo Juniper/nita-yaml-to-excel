@@ -4,7 +4,7 @@
 """ ********************************************************
 
 Project: nita-yaml-to-excel
-Version: 20.10
+Version: 21.7
 
 Copyright (c) Juniper Networks, Inc., 2020. All rights reserved.
 
@@ -17,7 +17,7 @@ Third-Party Code: This code may depend on other components under separate copyri
 ******************************************************** """
 #
 # This is legacy version of xls2yaml which uses old xlrd library version 1.1.0. xlrd may
-# still be required for legacy xls files which openpyxl does not support. 
+# still be required for legacy xls files which openpyxl does not support.
 #
 import ast
 import json
