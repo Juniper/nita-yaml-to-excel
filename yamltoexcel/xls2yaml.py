@@ -514,6 +514,8 @@ class ExcelToYaml(object):
                             {hostname: OrderedDict(temp_dict)})
                         self.sheet_data.update(OrderedDict(host_dict))
 
+
+
         else:
             logging.debug("Other Sheets :: %s ", sheet_name)
             keys = []
@@ -527,6 +529,8 @@ class ExcelToYaml(object):
                 empty_value_count = 0
                 for col in range(1,sheet.max_column+1):
                     cell_value = sheet.cell(row, col).value
+                    if cell_value is None:
+                        cell_value = ""
                     if cell_value == "host":
                         is_header_row = True
                         keys = []
@@ -545,7 +549,7 @@ class ExcelToYaml(object):
                             else:
                                 empty_value_count = empty_value_count + 1
                         else:
-
+                            logging.debug("Row = %i, col = %i, key = %s, cell_value = %s",row,col,keys[i],cell_value)
                             if keys[i] != "" and keys[i].find("+") > 0 or sheet_name.find("+") > 0:
                                 temp_array_data = self.map_key_value(
                                     keys[i], cell_value, array_data)
@@ -557,7 +561,6 @@ class ExcelToYaml(object):
                             elif keys[i] != "":
                                 self.process_data(
                                     keys[i], cell_value, hostname, sheet_name)
-
                         i = i + 1
 
                 logging.debug(
