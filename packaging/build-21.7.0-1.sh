@@ -19,7 +19,7 @@
 set -e
 
 PACKAGE=yaml-to-excel
-VERSION="2.0.0-1"
+VERSION="21.7.0-1"
 
 # cleanup version if the directory name is used
 VTMP="${VERSION#$PACKAGE-}"

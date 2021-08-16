@@ -16,7 +16,6 @@ Third-Party Code: This code may depend on other components under separate copyri
 ******************************************************** """
 
 import yaml
-#import xlwt
 import sys
 import os
 from collections import OrderedDict

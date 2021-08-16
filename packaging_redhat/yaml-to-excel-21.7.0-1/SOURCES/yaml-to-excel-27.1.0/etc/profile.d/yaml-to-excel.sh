@@ -14,9 +14,9 @@
 #
 # ********************************************************
 if [ -z "$PYTHONPATH" ]; then
-	PYTHONPATH=/usr/local/lib/python3.8/dist-packages
+	PYTHONPATH=/usr/local/lib/python3.6/dist-packages
 else
-	PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.8/dist-packages
+	PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.6/dist-packages
 fi
 
 export PYTHONPATH

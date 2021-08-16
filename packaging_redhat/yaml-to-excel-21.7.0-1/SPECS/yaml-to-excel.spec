@@ -18,7 +18,7 @@
 %define        __os_install_post %{_dbpath}/brp-compress
 
 Name:           yaml-to-excel
-Version:        2.0.0
+Version:        21.7.0
 Release:        1
 Summary:        Tool for converting excel spreadsheets to and from yaml
 Group:          Development/Tools
@@ -64,8 +64,8 @@ rm -rf %{buildroot}
 %{_sysconfdir}/profile.d/yaml-to-excel.sh
 
 %changelog
-* Sat Aug 7 2021 Hugo Ribeiro 2.0.0-1
-  - Changed xlsx parser library
+* Fri Aug 13 2021 Ashley Burston 21.7.0-1
+  - Got rid of xlwt and xlrd
 * Wed Jul 29 2020 Hugo Ribeiro 1.0.0-1
   - Bug fixes
 * Wed May 6 2020 Ashley Burston 0.9.0-1
