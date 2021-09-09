@@ -1,11 +1,11 @@
 Package: yaml-to-excel
-Version: 1.0.0-1
+Version: 21.7.0-1
 Source: yaml-to-excel
 Section: contrib/python
 Priority: extra
 Maintainer: Ashley Burston
-Build-Depends: python3,python3-setuptools,python3-yaml,python3-xlrd,python3-openpyxl
+Build-Depends: python3,python3-setuptools,python3-yaml,python3-openpyxl
 Architecture: all
 Pre-Depends: dpkg,python3
-Depends: python3-yaml,python3-xlrd,python3-openpyxl
+Depends: python3-yaml,python3-openpyxl
 Description: Tool for converting excel spreadsheets to and from yaml

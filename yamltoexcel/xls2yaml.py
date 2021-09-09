@@ -3,7 +3,7 @@
 """ ********************************************************
 
 Project: nita-yaml-to-excel
-Version: 20.10
+Version: 21.7
 
 Copyright (c) Juniper Networks, Inc., 2021. All rights reserved.
 

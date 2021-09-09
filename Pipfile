@@ -5,10 +5,8 @@ name = "pypi"
 
 [packages]
 pyaml = "*"
-xlwt = "*"
 openpyxl = "*"
 pyyaml = "*"
-xlrd = "*"
 
 [dev-packages]
 pylint = "*"

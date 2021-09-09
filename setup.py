@@ -3,9 +3,9 @@
 # ********************************************************
 #
 # Project: nita-yaml-to-excel
-# Version: 20.10
+# Version: 21.7
 #
-# Copyright (c) Juniper Networks, Inc., 2020. All rights reserved.
+# Copyright (c) Juniper Networks, Inc., 2021. All rights reserved.
 #
 # Notice and Disclaimer: This code is licensed to you under the Apache 2.0 License (the "License"). You may not use this code except in compliance with the License. This code is not an official Juniper product. You can obtain a copy of the License at https://www.apache.org/licenses/LICENSE-2.0.html
 #
@@ -22,12 +22,12 @@ except ImportError:
 
 config = {
     'description': 'Bidirectional conversion of YAML files to Microsoft Excel.',
-    'author': 'Dinesh Sekar',
-    'url': 'https://ps-network-automation.visualstudio.com/NITA/_git/yaml-to-excel',
-    'download_url': 'https://artifactory.aslab.juniper.net/artifactory/api/pypi/ps-pypi/simple/yaml-to-excel/',
-    'author_email': 'dsek@juniper.net',
-    'version': '1.0.0',
-    'install_requires': ['PyYAML', 'xlrd', 'xlwt', 'openpyxl'],
+    'author': 'Juniper Networks',
+    'url': 'https://github.com/Juniper/nita-yaml-to-excel',
+    'download_url': 'https://github.com/Juniper/nita-yaml-to-excel/archive/refs/heads/21.7.zip',
+    'author_email': 'aburston@juniper.net',
+    'version': '21.7.0',
+    'install_requires': ['PyYAML', 'openpyxl'],
     'packages': ['yamltoexcel'],
     'scripts': ['yamltoexcel/xls2yaml.py', 'yamltoexcel/yaml2xls.py'],
     'name': 'yaml-to-excel'
