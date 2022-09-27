@@ -1,6 +1,6 @@
-# yaml-to-excel 21.7
+# yaml-to-excel 22.8
 
-Welcome to NITA 21.7
+Welcome to NITA 22.8
 
 This project consists of the tools required for manipulating YAML files
 and Microsoft excel spreadsheet files.
@@ -32,20 +32,6 @@ This tool is especially useful when used together with Ansible playbooks in orde
 
 # Installation
 
-If you do not have the the required package files for your system, .deb for Ubuntu or .rpm for Centos refer to [BUILD.md](./BUILD.md) file for instructions on how to generate these files.
+Using pip3:
 
-### Ubuntu
-
-If you have been provided with the .deb package file run the following command:
-
-```bash
-sudo apt-get install ./yaml-to-excel-21.7.0-1.deb
-```
-
-### Centos
-
-If you have been provided with the .rpm package file run the following command:
-
-```bash
-sudo yum install ./yaml-to-excel-21.7.0-1.rpm
-```
+`pip3 install nita-yaml-to-excel/`

@@ -3,7 +3,6 @@
 # ********************************************************
 #
 # Project: nita-yaml-to-excel
-# Version: 21.7
 #
 # Copyright (c) Juniper Networks, Inc., 2021. All rights reserved.
 #
@@ -24,9 +23,9 @@ config = {
     'description': 'Bidirectional conversion of YAML files to Microsoft Excel.',
     'author': 'Juniper Networks',
     'url': 'https://github.com/Juniper/nita-yaml-to-excel',
-    'download_url': 'https://github.com/Juniper/nita-yaml-to-excel/archive/refs/heads/21.7.zip',
+    'download_url': 'https://github.com/Juniper/nita-yaml-to-excel/archive/refs/heads/22.8.zip',
     'author_email': 'aburston@juniper.net',
-    'version': '21.7.0',
+    'version': '22.8.0',
     'install_requires': ['PyYAML', 'openpyxl'],
     'packages': ['yamltoexcel'],
     'scripts': ['yamltoexcel/xls2yaml.py', 'yamltoexcel/yaml2xls.py'],
