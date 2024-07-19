@@ -49,8 +49,9 @@ To convert a spreadsheet into a YAML file, the format of the command is this:
 ```bash
 xls2yaml.py <excel spreadsheet name> <destination directory>
 ```
-Here is an example Excel workbook with one sheet called `addresses+`, with the following table using the naming conventions outlined above:
+Here is an example Excel workbook with one sheet called `addresses+` and a table the conforms to the conventions outlined above:
 
+![Spreadsheet image](./images/spreadsheet.jpg)
 
 To convert this workbook into YAML, do this:
 ```bash
@@ -73,7 +74,7 @@ addresses:
 - address: www.google.com
 - address: www.juniper.net
 host@nita:~/tmp$
-\\\
+```
 
 These tools are especially useful when working with NITA project files, to populate the inventory files in YAML format that are used by Ansible.
 
