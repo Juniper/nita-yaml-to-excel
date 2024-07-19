@@ -30,7 +30,7 @@ To convert a Yaml formatted file into a Microsoft Excel spreadsheet, do this:
 ```bash
 yaml2xls.py <yaml files> <excel spreadsheet name>
 ```
-This converts one or more yaml files to an excel spreadsheet, first create your spreadsheet.
+This converts one or more yaml files to an excel spreadsheet.
 
 ## Converting from Excel to YAML
 
