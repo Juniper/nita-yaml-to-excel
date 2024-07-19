@@ -12,22 +12,68 @@ For details about NITA, please refer to the parent [README][readme].
 
 # Installation
 
-NITA YAML-to-Excel is a standalone application that does not require Kubernetes or the other NITA modules. You can simply install it using pip3:
+NITA YAML-to-Excel is a standalone application that does not require Kubernetes or the other NITA modules. You can simply download it from this repo and install it using pip3:
 
-`pip3 install nita-yaml-to-excel/`
+```bash
+$ wget https://github.com/Juniper/nita-yaml-to-excel/archive/refs/heads/main.zip
+$ unzip main.zip
+$ pip3 ./install nita-yaml-to-excel/
+```
 
 # Usage
 The most important two programs provided are inside the ``./yamltoexcel`` folder:
 
+## Converting from YAML to Excel
+
+To convert a Yaml formatted file into a Microsoft Excel spreadsheet, do this:
+
 ```bash
 yaml2xls.py <yaml files> <excel spreadsheet name>
 ```
-- This converts a group of yaml files to an excel spreadsheet
+This converts one or more yaml files to an excel spreadsheet, first create your spreadsheet.
+
+## Converting from Excel to YAML
+
+To convert a Microsoft Excel spreadsheet to YAML format you will first need to create a spreadsheet. There are a few things to be aware of with regards to the format of your spreadsheet:
+
+- Microsoft Excel workbooks must be saved in "XLSX" format. The old "XLS" format is not supported.
+- Sheets don't need names, but it helps to give them meaningful names instead of the default `Sheet1` and `Sheet2` etc.
+- If you have repeating data in your sheet (i.e. the same YAML variable but with different values), add a "+" to the sheet's name (see screenshot below)
+- **Each sheet must have one table heading row, on row one**
+- **Column A must be called "host"**. This refers to the destination YAML file where data will be written to.
+- A sheet named `base` is special, and must have three columns (A, B, C) named `host`, `name` and `value`
+- Any other sheet can have as many columns as you need, called whatever you want
+
+To convert a spreadsheet into a YAML file, the format of the command is this:
 
 ```bash
 xls2yaml.py <excel spreadsheet name> <destination directory>
 ```
-- This converts an excel spreadsheet into a collection of yaml files
+Here is an example Excel workbook with one sheet called `addresses+`, with the following table using the naming conventions outlined above:
+
+
+To convert this workbook into YAML, do this:
+```bash
+user@nita:~/tmp$ ls -al
+total 20
+drwxrwxr-x 2 host host 4096 Jul 19 08:13 .
+drwxr-x--- 9 host host 4096 Jul 19 08:13 ..
+-rw-rw-r-- 1 host host 9900 Jul 19 07:56 addresses.xlsx
+host@nita:~/tmp$ xls2yaml.py addresses.xlsx .
+host@nita:~/tmp$ ls -al
+total 24
+drwxrwxr-x 2 host host 4096 Jul 19 08:13 .
+drwxr-x--- 9 host host 4096 Jul 19 08:13 ..
+-rw-rw-r-- 1 host host 9900 Jul 19 07:56 addresses.xlsx
+-rw-rw-r-- 1 host host   89 Jul 19 08:13 addresses.yaml
+host@nita:~/tmp$ cat addresses.yaml
+---
+addresses:
+- address: 127.0.0.1
+- address: www.google.com
+- address: www.juniper.net
+host@nita:~/tmp$
+\\\
 
 These tools are especially useful when working with NITA project files, to populate the inventory files in YAML format that are used by Ansible.
 
