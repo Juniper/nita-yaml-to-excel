@@ -17,7 +17,7 @@ NITA YAML-to-Excel is a standalone application that does not require Kubernetes 
 ```bash
 $ wget https://github.com/Juniper/nita-yaml-to-excel/archive/refs/heads/main.zip
 $ unzip main.zip
-$ pip3 ./install nita-yaml-to-excel/
+$ pip3 install ./nita-yaml-to-excel/
 ```
 
 # Usage
