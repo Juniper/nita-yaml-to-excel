@@ -53,7 +53,7 @@ jobs:
           export SBOM_OUTPUT="/var/tmp/sbom_output"
           rm -rf "${SBOM_OUTPUT}_python"
           mkdir "${SBOM_OUTPUT}_python"
-          $RUNNER_TEMP/sbom-tool generate -m ${SBOM_OUTPUT}_python -li true -pm true -b . -bc . -pn "${PackageName}" -pv 1.0.0 -ps "${CompanyName}" -nsb "${NSB}" -V Verbose 
+          $RUNNER_TEMP/sbom-tool generate -m ${SBOM_OUTPUT}_python -li true -pm true -b yamltoexcel -bc . -pn "${PackageName}" -pv 1.0.0 -ps "${CompanyName}" -nsb "${NSB}" -V Verbose 
           cp ${SBOM_OUTPUT}_python/_manifest/spdx_2.2/manifest.spdx.json NOTICES.spdx.json
 
       - name: Generate License and README
