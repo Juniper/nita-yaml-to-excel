@@ -75,18 +75,17 @@ jobs:
           git commit -m "Release workflow"
           git push 
           export ver=`cat VERSION.txt` 
-          echo "VER=$ver TAG=v$ver"
-          git tag "v$ver"  
-          git push origin "v$ver"
+          echo "VER=$ver TAG=$ver"
+          git tag "$ver"  
+          git push origin "$ver"
 
           
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.event.inputs.release_name }}
         run: |
-          export tag2=`cat VERSION.txt`
-          gh release create "v$tag2" \
+          export tag=`cat VERSION.txt`
+          gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
-              --title="${tag2}" \
+              --title="${tag}" \
               --generate-notes

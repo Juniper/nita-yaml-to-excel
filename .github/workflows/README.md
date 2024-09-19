@@ -10,9 +10,12 @@ This is the GitHub Action ``Create Release Manually`` and is used to create (i.e
 
 The same value will be used for both the Release and the Tag. Enter a number such as "24.09" for example. The workflow asks for it twice here, to help avoid the mistake of mistyping.
 
-The workflow actions are defined in the file ``release_manual.yml`` and are described here:
- - Takes the tag and writes it to the file ``VERSION.txt``
- - Checks the Software Bill of Materials (SBOM) for all Python code, and writes the copyright details for each dependency to a file called ``NOTICES.spdx.json``
- - Updates the copyright message with the correct year in the files ``README.md`` and ``LICENSE.txt``
- - Commits all of these changes back to the repo
- - Creates a release artifact based on the given tag
+The workflow steps are defined in the file ``release_manual.yml`` and are described here:
+ - Verify that both entries from the initial dialogue are the same. in case of any discrepancy teh workflow stops.
+ - Checkout code from gitub repository
+ - Take the tag and writes it to the file ``VERSION.txt``
+ - Check the Software Bill of Materials (SBOM) for all Python code, and write the copyright details for each dependency to a file called ``NOTICES.spdx.json``
+ - Generate ``LICENSE.txt`` and ``README.md`` by updatings the copyright message with the correct   year, using files in build-templates directory as templates
+ - Commit changes and push them back to github repository
+ - Create a release artifact based on the given tag
+ 
