@@ -23,7 +23,7 @@ jobs:
         shell: bash
         run: |
            if [ ${{ github.event.inputs.release_name }} != ${{ github.event.inputs.confirm_release_name }} ] ; then
-              echo "Discrepancy between release_anme and confirmation releasename!"
+              echo "Discrepancy between release name and confirmation release name!"
               exit 1
            fi
       - name: Checkout Code
