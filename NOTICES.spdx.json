@@ -1,0 +1,156 @@
+{
+  "files": [
+    {
+      "fileName": "./../NOTICES.spdx.json",
+      "SPDXID": "SPDXRef-File--..-NOTICES.spdx.json-6251AC75C47272251C764F637AD7FA109D6FB0E8",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5c29b8d9ab05b7ac64502ebbf0a8de6d0404e9beadd00ce9cedbf5ffa04daa46"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "6251ac75c47272251c764f637ad7fa109d6fb0e8"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION",
+      "fileTypes": [
+        "SPDX"
+      ]
+    },
+    {
+      "fileName": "./__init__.py",
+      "SPDXID": "SPDXRef-File----init--.py-8D2AE417E01BC88BFF8ADF2A4288B37B79C042E6",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ee5063100deaa2c306b527cdb68f4dd8681bbd1cdb6fbbdd48494d05dbddf230"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "8d2ae417e01bc88bff8adf2a4288b37b79c042e6"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./xls2yaml.py",
+      "SPDXID": "SPDXRef-File--xls2yaml.py-BFEDBE0A46082991385D9B6E2229F31351407C8E",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0640ecd2bf0f057e6b61773ac0ac7de757e1dbbad08b45155627a6902a5f81c4"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "bfedbe0a46082991385d9b6e2229f31351407c8e"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./yaml2xls.py",
+      "SPDXID": "SPDXRef-File--yaml2xls.py-C53744934A3FB8F5C31FE12258A928381C329DDB",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "67ead982e144f7dba17bcb8dd4c7377fe21f79e17384d79419cb510017eb8b7c"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "c53744934a3fb8f5c31fe12258a928381c329ddb"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    }
+  ],
+  "packages": [
+    {
+      "name": "nita-yaml-to-excel",
+      "SPDXID": "SPDXRef-RootPackage",
+      "downloadLocation": "NOASSERTION",
+      "packageVerificationCode": {
+        "packageVerificationCodeValue": "dc221badab40e44e306369bcd6e27c0cbe4a2e9f"
+      },
+      "filesAnalyzed": true,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:swid/Juniper%20Networks/juniper.net/nita-yaml-to-excel@1.0.0?tag_id=f9fbc119-cb4e-41af-8c88-69a1622fb907"
+        }
+      ],
+      "supplier": "Organization: Juniper Networks",
+      "hasFiles": [
+        "SPDXRef-File--yaml2xls.py-C53744934A3FB8F5C31FE12258A928381C329DDB",
+        "SPDXRef-File--xls2yaml.py-BFEDBE0A46082991385D9B6E2229F31351407C8E",
+        "SPDXRef-File----init--.py-8D2AE417E01BC88BFF8ADF2A4288B37B79C042E6"
+      ]
+    }
+  ],
+  "externalDocumentRefs": [
+    {
+      "externalDocumentId": "DocumentRef-nita-yaml-to-excel-1.0.0-6251ac75c47272251c764f637ad7fa109d6fb0e8",
+      "spdxDocument": "https://juniper.net/nita-yaml-to-excel/1.0.0/7_6LskFLTkqRWknuLuOwLQ",
+      "checksum": {
+        "algorithm": "SHA1",
+        "checksumValue": "6251ac75c47272251c764f637ad7fa109d6fb0e8"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "DESCRIBED_BY",
+      "relatedSpdxElement": "SPDXRef-DOCUMENT",
+      "spdxElementId": "SPDXRef-File--..-NOTICES.spdx.json-6251AC75C47272251C764F637AD7FA109D6FB0E8"
+    },
+    {
+      "relationshipType": "PREREQUISITE_FOR",
+      "relatedSpdxElement": "DocumentRef-nita-yaml-to-excel-1.0.0-6251ac75c47272251c764f637ad7fa109d6fb0e8:SPDXRef-RootPackage",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "spdxElementId": "SPDXRef-DOCUMENT"
+    }
+  ],
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "nita-yaml-to-excel 1.0.0",
+  "documentNamespace": "https://juniper.net/nita-yaml-to-excel/1.0.0/qUFeFqEt9UaMubapYVDd_w",
+  "creationInfo": {
+    "created": "2024-09-19T14:01:25Z",
+    "creators": [
+      "Organization: Juniper Networks",
+      "Tool: Microsoft.SBOMTool-2.2.9"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-RootPackage"
+  ]
+}
