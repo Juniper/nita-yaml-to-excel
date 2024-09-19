@@ -2,15 +2,15 @@
   "files": [
     {
       "fileName": "./../NOTICES.spdx.json",
-      "SPDXID": "SPDXRef-File--..-NOTICES.spdx.json-4CB316AFDF55D3745BB86FB9C6AD2B5C30B8BC79",
+      "SPDXID": "SPDXRef-File--..-NOTICES.spdx.json-483E31F350FA052883C74D8CDE8806C1B62E8285",
       "checksums": [
         {
           "algorithm": "SHA256",
-          "checksumValue": "7d9202c0473701e1e73a37df784c86892e9c3beb6703ff8d31f369b0b15c318c"
+          "checksumValue": "b9ecee0caeae21a8128c4d141bec88c85a234b5095b4b54e09342973d6a0fab9"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "4cb316afdf55d3745bb86fb9c6ad2b5c30b8bc79"
+          "checksumValue": "483e31f350fa052883c74d8cde8806c1b62e8285"
         }
       ],
       "licenseConcluded": "NOASSERTION",
@@ -42,25 +42,6 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": "./xls2yaml.py",
-      "SPDXID": "SPDXRef-File--xls2yaml.py-BFEDBE0A46082991385D9B6E2229F31351407C8E",
-      "checksums": [
-        {
-          "algorithm": "SHA256",
-          "checksumValue": "0640ecd2bf0f057e6b61773ac0ac7de757e1dbbad08b45155627a6902a5f81c4"
-        },
-        {
-          "algorithm": "SHA1",
-          "checksumValue": "bfedbe0a46082991385d9b6e2229f31351407c8e"
-        }
-      ],
-      "licenseConcluded": "NOASSERTION",
-      "licenseInfoInFiles": [
-        "NOASSERTION"
-      ],
-      "copyrightText": "NOASSERTION"
-    },
-    {
       "fileName": "./yaml2xls.py",
       "SPDXID": "SPDXRef-File--yaml2xls.py-C53744934A3FB8F5C31FE12258A928381C329DDB",
       "checksums": [
@@ -78,69 +59,34 @@
         "NOASSERTION"
       ],
       "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./xls2yaml.py",
+      "SPDXID": "SPDXRef-File--xls2yaml.py-BFEDBE0A46082991385D9B6E2229F31351407C8E",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0640ecd2bf0f057e6b61773ac0ac7de757e1dbbad08b45155627a6902a5f81c4"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "bfedbe0a46082991385d9b6e2229f31351407c8e"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
     }
   ],
   "packages": [
-    {
-      "name": "et-xmlfile",
-      "SPDXID": "SPDXRef-Package-EE7849153FE21B2DA633B63360ACBBFA9EBDEC8443E06083C6CD52724AA1F4B4",
-      "downloadLocation": "NOASSERTION",
-      "filesAnalyzed": false,
-      "licenseConcluded": "MIT",
-      "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "versionInfo": "1.1.0",
-      "externalRefs": [
-        {
-          "referenceCategory": "PACKAGE-MANAGER",
-          "referenceType": "purl",
-          "referenceLocator": "pkg:pypi/et-xmlfile@1.1.0"
-        }
-      ],
-      "supplier": "NOASSERTION"
-    },
-    {
-      "name": "PyYAML",
-      "SPDXID": "SPDXRef-Package-7CFA63577801497C1DCA35B4DF7AF0A27E65C160AF5232CCEE9E7AB56927CD4D",
-      "downloadLocation": "NOASSERTION",
-      "filesAnalyzed": false,
-      "licenseConcluded": "MIT",
-      "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "versionInfo": "6.0.2",
-      "externalRefs": [
-        {
-          "referenceCategory": "PACKAGE-MANAGER",
-          "referenceType": "purl",
-          "referenceLocator": "pkg:pypi/pyyaml@6.0.2"
-        }
-      ],
-      "supplier": "NOASSERTION"
-    },
-    {
-      "name": "openpyxl",
-      "SPDXID": "SPDXRef-Package-F4535A2B18B951D080E2E404FB1A4D9B15D5FFC3C27FEBA5E03A2A6A5C7CA1F0",
-      "downloadLocation": "NOASSERTION",
-      "filesAnalyzed": false,
-      "licenseConcluded": "MIT",
-      "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "versionInfo": "3.2.0b1",
-      "externalRefs": [
-        {
-          "referenceCategory": "PACKAGE-MANAGER",
-          "referenceType": "purl",
-          "referenceLocator": "pkg:pypi/openpyxl@3.2.0b1"
-        }
-      ],
-      "supplier": "NOASSERTION"
-    },
     {
       "name": "nita-yaml-to-excel",
       "SPDXID": "SPDXRef-RootPackage",
       "downloadLocation": "NOASSERTION",
       "packageVerificationCode": {
-        "packageVerificationCodeValue": "0527fb25849dd990382a93e80c040882f05dec2d"
+        "packageVerificationCodeValue": "29fdd60316da1f4658a94068f70353094b490369"
       },
       "filesAnalyzed": true,
       "licenseConcluded": "NOASSERTION",
@@ -154,69 +100,54 @@
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:swid/Juniper%20Networks/juniper.net/nita-yaml-to-excel@1.0.0?tag_id=281479dc-8774-4c49-8756-9a0eee113365"
+          "referenceLocator": "pkg:swid/Juniper%20Networks/juniper.net/nita-yaml-to-excel@1.0.0?tag_id=4fa5ca4a-aed6-4be4-9320-9bf7cc106d4c"
         }
       ],
       "supplier": "Organization: Juniper Networks",
       "hasFiles": [
-        "SPDXRef-File--yaml2xls.py-C53744934A3FB8F5C31FE12258A928381C329DDB",
         "SPDXRef-File--xls2yaml.py-BFEDBE0A46082991385D9B6E2229F31351407C8E",
+        "SPDXRef-File--yaml2xls.py-C53744934A3FB8F5C31FE12258A928381C329DDB",
         "SPDXRef-File----init--.py-8D2AE417E01BC88BFF8ADF2A4288B37B79C042E6"
       ]
     }
   ],
   "externalDocumentRefs": [
     {
-      "externalDocumentId": "DocumentRef-nita-yaml-to-excel-1.0.0-4cb316afdf55d3745bb86fb9c6ad2b5c30b8bc79",
-      "spdxDocument": "https://juniper.net/nita-yaml-to-excel/1.0.0/zPkGCpqzsUCMZvyIjSM0ww",
+      "externalDocumentId": "DocumentRef-nita-yaml-to-excel-1.0.0-483e31f350fa052883c74d8cde8806c1b62e8285",
+      "spdxDocument": "https://juniper.net/nita-yaml-to-excel/1.0.0/rIeTL2MWZUmzwlmHs24TcQ",
       "checksum": {
         "algorithm": "SHA1",
-        "checksumValue": "4cb316afdf55d3745bb86fb9c6ad2b5c30b8bc79"
+        "checksumValue": "483e31f350fa052883c74d8cde8806c1b62e8285"
       }
     }
   ],
   "relationships": [
     {
-      "relationshipType": "DESCRIBES",
-      "relatedSpdxElement": "SPDXRef-RootPackage",
-      "spdxElementId": "SPDXRef-DOCUMENT"
-    },
-    {
       "relationshipType": "DESCRIBED_BY",
       "relatedSpdxElement": "SPDXRef-DOCUMENT",
-      "spdxElementId": "SPDXRef-File--..-NOTICES.spdx.json-4CB316AFDF55D3745BB86FB9C6AD2B5C30B8BC79"
-    },
-    {
-      "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package-7CFA63577801497C1DCA35B4DF7AF0A27E65C160AF5232CCEE9E7AB56927CD4D",
-      "spdxElementId": "SPDXRef-RootPackage"
-    },
-    {
-      "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package-F4535A2B18B951D080E2E404FB1A4D9B15D5FFC3C27FEBA5E03A2A6A5C7CA1F0",
-      "spdxElementId": "SPDXRef-RootPackage"
-    },
-    {
-      "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package-EE7849153FE21B2DA633B63360ACBBFA9EBDEC8443E06083C6CD52724AA1F4B4",
-      "spdxElementId": "SPDXRef-RootPackage"
+      "spdxElementId": "SPDXRef-File--..-NOTICES.spdx.json-483E31F350FA052883C74D8CDE8806C1B62E8285"
     },
     {
       "relationshipType": "PREREQUISITE_FOR",
-      "relatedSpdxElement": "DocumentRef-nita-yaml-to-excel-1.0.0-4cb316afdf55d3745bb86fb9c6ad2b5c30b8bc79:SPDXRef-RootPackage",
+      "relatedSpdxElement": "DocumentRef-nita-yaml-to-excel-1.0.0-483e31f350fa052883c74d8cde8806c1b62e8285:SPDXRef-RootPackage",
       "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "spdxElementId": "SPDXRef-DOCUMENT"
     }
   ],
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
   "name": "nita-yaml-to-excel 1.0.0",
-  "documentNamespace": "https://juniper.net/nita-yaml-to-excel/1.0.0/rIeTL2MWZUmzwlmHs24TcQ",
+  "documentNamespace": "https://juniper.net/nita-yaml-to-excel/1.0.0/7_6LskFLTkqRWknuLuOwLQ",
   "creationInfo": {
-    "created": "2024-09-05T12:40:06Z",
+    "created": "2024-09-19T13:55:06Z",
     "creators": [
       "Organization: Juniper Networks",
-      "Tool: Microsoft.SBOMTool-2.2.7"
+      "Tool: Microsoft.SBOMTool-2.2.9"
     ]
   },
   "documentDescribes": [
