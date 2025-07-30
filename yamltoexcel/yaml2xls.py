@@ -369,6 +369,9 @@ class YamlToExcel (object):
 
     def parse_yaml_files(self, wb, ws, file_content, hostname, sheet_last_row_index):
         for key in file_content:
+            if type(key) is OrderedDict:
+                logging.warning("The base list is empty.")
+                return
             keyValuePair = []
             keyValuePair.append(key)
             value = file_content[key]
