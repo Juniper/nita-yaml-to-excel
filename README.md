@@ -1,7 +1,7 @@
-[branch]: https://github.com/Juniper/nita/tree/23.12-1
-[readme]: https://github.com/Juniper/nita/blob/23.12-1/README.md
+[branch]: https://github.com/Juniper/nita/tree/26.10
+[readme]: https://github.com/Juniper/nita/blob/26.10/README.md
 
-# NITA YAML-to-Excel 23.12-1
+# NITA YAML-to-Excel 26.10
 
 Welcome to NITA, an open source platform for automating the building and testing of complex networks.
 
