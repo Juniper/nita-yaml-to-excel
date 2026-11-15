@@ -19,6 +19,7 @@ source code file.
 ******************************************************** """
 import os
 from collections import OrderedDict
+from copy import deepcopy
 
 import pytest
 import yaml
@@ -366,6 +367,25 @@ class TestMapKeyValue:
         result = self.e.map_key_value("a.b.c", "deep", OrderedDict())
         assert result["a"]["b"]["c"] == "deep"
 
+    def test_empty_dotted_value_does_not_create_or_modify_parents(self):
+        key = "forwarding_table.chained_composite_next_hop.ingress.evpn"
+        assert self.e.map_key_value(key, "", OrderedDict()) == OrderedDict()
+        existing = OrderedDict({
+            "forwarding_table": OrderedDict({
+                "export": "PFE-LB",
+                "chained_composite_next_hop": OrderedDict({
+                    "ingress": OrderedDict({"evpn": True}),
+                }),
+            }),
+        })
+        expected = deepcopy(existing)
+        assert self.e.map_key_value(key, "", existing) == expected
+
+    @pytest.mark.parametrize("value,expected", [(False, False), (0, 0), ("None", None)])
+    def test_supplied_nested_values_are_not_treated_as_blank(self, value, expected):
+        result = self.e.map_key_value("parent.leaf", value, OrderedDict())
+        assert result == OrderedDict({"parent": OrderedDict({"leaf": expected})})
+
 
 class TestProcessData:
     """Tests for :meth:`ExcelToYaml.process_data`."""
@@ -463,6 +483,63 @@ class TestRoundTrip:
         content = "dns:\n  - 8.8.8.8\n  - 8.8.4.4\n"
         result = self._round_trip(tmp_path, content)
         assert "8.8.8.8" in result["dns"]
+
+    def test_blank_next_hop_cells_do_not_create_containers_in_memory(self, tmp_path):
+        workbook = Workbook()
+        sheet = workbook.active
+        sheet.title = "routing_options"
+        sheet.append([
+            "host", "forwarding_table.export",
+            "forwarding_table.chained_composite_next_hop.ingress.evpn",
+        ])
+        sheet.append(["host_vars/spine1.yaml", "PFE-LB", None])
+        sheet.append(["host_vars/leaf1.yaml", None, "true"])
+        sheet.append(["host_vars/spine2.yaml", "PFE-LB", ""])
+        sheet.append(["host_vars/leaf1.yaml", None, None])
+        path = tmp_path / "input.xlsx"
+        workbook.save(path)
+        converter = ExcelToYaml(str(path), str(tmp_path))
+        converter.process_by_sheet(load_workbook(path), "routing_options")
+        assert converter.sheet_data == {
+            "host_vars/spine1.yaml": {
+                "routing_options": {"forwarding_table": {"export": "PFE-LB"}},
+            },
+            "host_vars/leaf1.yaml": {
+                "routing_options": {"forwarding_table": {
+                    "chained_composite_next_hop": {"ingress": {"evpn": "true"}},
+                }},
+            },
+            "host_vars/spine2.yaml": {
+                "routing_options": {"forwarding_table": {"export": "PFE-LB"}},
+            },
+        }
+
+    def test_sparse_nested_list_rows_merge_without_blank_placeholder_paths(self, tmp_path):
+        workbook = Workbook()
+        sheet = workbook.active
+        sheet.title = "tenants+"
+        sheet.append([
+            "host", "@name", "protocols+.@group", "protocols+.description",
+            "dhcp_relay.server_groups+.@group",
+            "dhcp_relay.server_groups+.addresses+.name", "routing_options.router_id",
+            "dhcp_relay.groups+.@group", "dhcp_relay.groups+.description",
+        ])
+        sheet.append(["host_vars/device.yaml", "tenant1", "bgp", "peering", None, None, None, None, None])
+        sheet.append(["host_vars/device.yaml", "tenant1", None, None, None, None, None, "clients", "relay"])
+        sheet.append(["host_vars/device.yaml", "tenant1", None, None, "dhcp", "192.0.2.1", None, None, None])
+        sheet.append(["host_vars/device.yaml", "tenant1", None, None, None, None, "192.0.2.2", None, None])
+        converter = ExcelToYaml("unused.xlsx", str(tmp_path))
+        converter.process_by_sheet(workbook, "tenants+")
+        assert converter.sheet_data == {
+            "host_vars/device.yaml": {"tenants": [{
+                "name": "tenant1",
+                "protocols": [{"group": "bgp", "description": "peering"}],
+                "dhcp_relay": {"server_groups": [{
+                    "group": "dhcp", "addresses": [{"name": "192.0.2.1"}],
+                }], "groups": [{"group": "clients", "description": "relay"}]},
+                "routing_options": {"router_id": "192.0.2.2"},
+            }]},
+        }
 
     def test_nested_protocol_rows_preserve_parent_instance_names(self, tmp_path):
         content = """

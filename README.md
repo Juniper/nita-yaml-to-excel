@@ -52,6 +52,16 @@ To convert a Microsoft Excel spreadsheet to YAML format you will first need to c
 - A sheet named `base` is special, and must have three columns (A, B, C) named `host`, `name` and `value`
 - Any other sheet can have as many columns as you need, called whatever you want
 
+Blank cells are omitted before nested column paths are reconstructed. For example,
+a blank `forwarding_table.chained_composite_next_hop.ingress.evpn` cell does not
+create an empty next-hop container for that row's host. Other hosts' supplied
+values remain independent. Explicit `false`, `0`, and the existing `"None"`
+null/presence-leaf representation retain their previous behavior.
+
+Applications importing workbooks must install this updated converter; replacing
+a workbook does not update an application's installed Python dependency. Existing
+workbooks with blank cells can be reconverted without deleting their columns.
+
 To convert a spreadsheet into a YAML file, the format of the command is this:
 
 ```bash
