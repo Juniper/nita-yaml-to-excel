@@ -22,7 +22,7 @@ from collections import OrderedDict
 
 import pytest
 import yaml
-from openpyxl import Workbook
+from openpyxl import Workbook, load_workbook
 
 from yamltoexcel.xls2yaml import ExcelToYaml, ordered_dump, stripper
 from yamltoexcel.yaml2xls import YamlToExcel, ordered_load
@@ -442,9 +442,9 @@ class TestRoundTrip:
         with open(yaml_path, "w", encoding="utf-8") as f:
             yaml.dump(initial, f, default_flow_style=False, explicit_start=True)
         YamlToExcel([yaml_path, xlsx_path]).convert_data()
-        ExcelToYaml(xlsx_path, str(tmp_path)).convert_data()
-        with open(str(tmp_path / yaml_path), "r", encoding="utf-8") as f:
-            return yaml.safe_load(f)
+        converter = ExcelToYaml(xlsx_path, str(tmp_path))
+        converter.convert_data()
+        return converter.sheet_data[yaml_path]
 
     def test_scalar_round_trip(self, tmp_path):
         """Plain scalar values survive the round-trip."""
@@ -463,6 +463,88 @@ class TestRoundTrip:
         content = "dns:\n  - 8.8.8.8\n  - 8.8.4.4\n"
         result = self._round_trip(tmp_path, content)
         assert "8.8.8.8" in result["dns"]
+
+    def test_nested_protocol_rows_preserve_parent_instance_names(self, tmp_path):
+        content = """
+routing_instances:
+  instance:
+    - name: VRF_10001
+      interface:
+        - name: irb.1001
+      protocols:
+        ospf:
+          area:
+            - name: 0.0.0.0
+              interface:
+                - name: xe-0/0/2.1
+                  metric: 100
+                - name: xe-0/0/3.1
+                  metric: 200
+    - name: VRF_10002
+      interface:
+        - name: irb.2001
+      protocols:
+        ospf:
+          area:
+            - name: 0.0.0.0
+              interface:
+                - name: xe-0/0/2.2
+                  metric: 300
+"""
+        assert self._round_trip(tmp_path, content) == yaml.safe_load(content)
+
+    def test_nested_protocols_survive_with_parent_key_after_nested_data(self, tmp_path):
+        content = """
+routing_instances:
+  instance:
+    - interface:
+        - name: irb.1001
+      protocols:
+        ospf:
+          reference_bandwidth: 100
+          area:
+            - interface:
+                - metric: 100
+                  name: xe-0/0/2.1
+                - metric: 200
+                  name: xe-0/0/3.1
+              name: 0.0.0.0
+      name: VRF_10001
+    - protocols:
+        ospf:
+          area:
+            - interface:
+                - name: xe-0/0/2.2
+              name: 0.0.0.0
+      name: VRF_10002
+"""
+        expected = {}
+        for hostname, host_content in (
+            ("host1.yaml", content),
+            ("host2.yaml", content.replace("VRF_1000", "VRF_2000")),
+        ):
+            yaml_path = tmp_path / hostname
+            yaml_path.write_text(host_content)
+            expected[str(yaml_path)] = yaml.safe_load(host_content)
+        xlsx_path = tmp_path / "out.xlsx"
+        YamlToExcel([*expected, str(xlsx_path)]).convert_data()
+        converter = ExcelToYaml(str(xlsx_path), str(tmp_path))
+        workbook = load_workbook(xlsx_path)
+        sheet = workbook["routing_instances"]
+        headers = next(sheet.values)
+        protocol_rows = 0
+        for values in list(sheet.values)[1:]:
+            row = dict(zip(headers, values))
+            if row.get("instance+.protocols.ospf.area+.interface+.name"):
+                protocol_rows += 1
+                assert row["instance+.@name"] in {
+                    instance["name"]
+                    for instance in expected[row["host"]]["routing_instances"]["instance"]
+                }
+        assert protocol_rows == 6
+        for name in workbook.sheetnames:
+            converter.process_by_sheet(workbook, name)
+        assert converter.sheet_data == expected
 
 
 class TestWriteBaseSheetData:

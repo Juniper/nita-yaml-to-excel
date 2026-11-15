@@ -32,6 +32,14 @@ yaml2xls.py <yaml files> <excel spreadsheet name>
 ```
 This converts one or more yaml files to an excel spreadsheet.
 
+Nested lists retain their parent identifiers on every exported row. For example,
+OSPF interface rows inside a routing instance repeat `instance+.@name`, so
+converting the workbook back to YAML keeps each protocol under its named instance.
+Dictionary containers such as `protocols.ospf` remain dictionaries, not lists.
+Regenerate existing workbooks from the original YAML if their nested rows are
+missing parent identifiers or protocol data; this fix does not repair previously
+exported workbooks.
+
 ## Converting from Excel to YAML
 
 To convert a Microsoft Excel spreadsheet to YAML format you will first need to create a spreadsheet. There are a few things to be aware of with regards to the format of your spreadsheet:

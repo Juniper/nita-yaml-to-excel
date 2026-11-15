@@ -360,14 +360,14 @@ class YamlToExcel:
 
         tempOldDictData = OrderedDict(oldDictData)
         listData = self.build_list_data(data)
+        tempPlainData = self.build_dict_data(
+            data, oldDictData, prefix, prefix.endswith('+'))
 
         logging.debug("listData ::::::: %s ", listData)
 
         if listData:
             logging.debug("\n\n\nFinal list in dictionary..... parse_recursive_data ...... %s %s %s %s ",
                           listData, rowIndex, tempOldDictData, prefix)
-            tempPlainData = self.build_dict_data(
-                data, oldDictData, prefix, True)
             logging.debug(
                 "Dict data with unique identifier ::: parse_recursive_data %s ", tempPlainData)
             for listKey in listData:
@@ -381,7 +381,6 @@ class YamlToExcel:
 
         if isinstance(data, list):
             logging.debug("$$$$$$$$$$$$$$$List.... %s ", data)
-            tempRowIndex = rowIndex
             addColumnHeader = add_column_header
             for tempData in data:
                 if isinstance(tempData, list):
@@ -389,39 +388,32 @@ class YamlToExcel:
                 elif isinstance(tempData, OrderedDict):
                     logging.debug(
                         "####################################### Dict .......... %s %s %s ", tempData, tempOldDictData, prefix)
-                    temp_listData = self.build_list_data(tempData)
-                    if not temp_listData:
+                    previousRowIndex = rowIndex
+                    rowIndex = self.parse_recursive_data(
+                        ws, tempData, oldDictData, hostname, add_column_header, rowIndex, colIndex, prefix)
+                    if rowIndex == previousRowIndex:
                         tempDictData = self.build_dict_data(
                             tempData, tempOldDictData, prefix)
-                        tempRowIndex = self.add_plain_dict_data(
-                            ws, tempDictData, hostname, tempRowIndex, addColumnHeader)
-                    else:
-                        rowIndex = self.parse_recursive_data(
-                            ws, tempData, oldDictData, hostname, add_column_header, rowIndex, colIndex, prefix)
+                        rowIndex = self.add_plain_dict_data(
+                            ws, tempDictData, hostname, rowIndex, addColumnHeader)
                 else:
                     logging.debug(
                         "Not dict and list :::::::: old data %s %s ", tempData, prefix)
                     tempRepeatData = tempOldDictData
                     tempRepeatData[prefix] = tempData
-                    tempRowIndex = self.add_plain_dict_data(
-                        ws, tempRepeatData, hostname, tempRowIndex, addColumnHeader)
-
-            rowIndex = max(rowIndex, tempRowIndex)
+                    rowIndex = self.add_plain_dict_data(
+                        ws, tempRepeatData, hostname, rowIndex, addColumnHeader)
 
         if isinstance(data, OrderedDict):
             for temp_key in data:
                 if isinstance(data[temp_key], OrderedDict):
-                    temp_listData = self.build_list_data(data[temp_key])
-                    if not temp_listData:
-                        logging.debug("Not a list")
+                    if prefix == "":
+                        temp_prefix = temp_key
                     else:
-                        if prefix == "":
-                            temp_prefix = temp_key
-                        else:
-                            temp_prefix = prefix + '.' + temp_key + '+'
-                        rowIndex = self.parse_recursive_data(
-                            ws, data[temp_key], oldDictData, hostname, add_column_header, rowIndex, colIndex, temp_prefix)
-                        logging.debug("rowIndex :: %s ", rowIndex)
+                        temp_prefix = prefix + '.' + temp_key
+                    rowIndex = self.parse_recursive_data(
+                        ws, data[temp_key], tempPlainData, hostname, add_column_header, rowIndex, colIndex, temp_prefix)
+                    logging.debug("rowIndex :: %s ", rowIndex)
 
         return rowIndex
 
