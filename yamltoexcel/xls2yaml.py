@@ -158,6 +158,7 @@ class ExcelToYaml:
 
         Recursively inserts *value* at the appropriate nesting level within
         *param_dict* by splitting *key* on ``"."``.
+        Blank cells do not create or modify the surrounding hierarchy.
 
         Args:
             key (str): Dot-separated column header from the spreadsheet.
@@ -167,9 +168,11 @@ class ExcelToYaml:
         Returns:
             OrderedDict: Updated (or new) mapping containing the key/value.
         """
+        value = self.parse_cell_value(value)
+        if value == "":
+            return param_dict
         splitted_keys = key.split('.')
         mapped_dict = param_dict
-        value = self.parse_cell_value(value)
         if len(splitted_keys) > 1:
 
             index = key.find(".")
@@ -186,8 +189,7 @@ class ExcelToYaml:
                     sliced_str, value, OrderedDict())
                 mapped_dict.update(OrderedDict({first_str: temp_dict}))
         else:
-            if value != "":
-                mapped_dict = OrderedDict({key: value})
+            mapped_dict = OrderedDict({key: value})
 
         return mapped_dict
 
@@ -395,9 +397,8 @@ class ExcelToYaml:
         if hierarchy_dict_data:
             for hierarchy_key in hierarchy_dict_data:
 
-                temp_array_hierarchy_data = first_level_dict_data
-                if hierarchy_key in first_level_dict_data.keys():
-                    temp_array_hierarchy_data = first_level_dict_data[hierarchy_key]
+                temp_array_hierarchy_data = first_level_dict_data.get(
+                    hierarchy_key, OrderedDict())
 
                 if isinstance(old_data, OrderedDict):
                     if hierarchy_key in old_data.keys():
@@ -411,9 +412,10 @@ class ExcelToYaml:
                     if "new_data" in temp_dic_data.keys():
                         temp_hierarchy_data = temp_dic_data["new_data"]
 
-                if isinstance(old_data, OrderedDict):
-                    if hierarchy_key in old_data.keys():
-                        temp_hierarchy_data.update(old_data[hierarchy_key])
+                if isinstance(temp_array_hierarchy_data, OrderedDict):
+                    retained_hierarchy_data = OrderedDict(temp_array_hierarchy_data)
+                    retained_hierarchy_data.update(temp_hierarchy_data)
+                    temp_hierarchy_data = retained_hierarchy_data
 
                 if temp_hierarchy_data:
                     first_level_dict_data.update(OrderedDict(
@@ -501,7 +503,7 @@ class ExcelToYaml:
     def process_list_data(self, parentKey, dict_data, hostname, sheet_name):
         """Route list-type row data into the appropriate in-memory structure.
 
-        Inspects *dict_data* for ``+``-encoded keys (nested lists) and
+        Recursively inspects *dict_data* for ``+``/``@``-encoded keys and
         dispatches to :meth:`add_hierarical_data` with the appropriate
         ``is_list`` flag and stripped sheet name.
 
@@ -514,10 +516,14 @@ class ExcelToYaml:
         logging.debug(dict_data)
         logging.debug("keys::::::::::::::::::::::::: %s ", dict_data.keys())
 
-        is_nested = False
-        for dict_key in dict_data:
-            if dict_key.find("+") > 0:
-                is_nested = True
+        def needs_reconstruction(data):
+            return any(
+                key.find("+") > 0 or key.startswith("@")
+                or (isinstance(value, OrderedDict) and needs_reconstruction(value))
+                for key, value in data.items()
+            )
+
+        is_nested = needs_reconstruction(dict_data)
 
         if is_nested:
             if sheet_name.find("+") > 0:

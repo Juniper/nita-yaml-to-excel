@@ -32,6 +32,14 @@ yaml2xls.py <yaml files> <excel spreadsheet name>
 ```
 This converts one or more yaml files to an excel spreadsheet.
 
+Nested lists retain their parent identifiers on every exported row. For example,
+OSPF interface rows inside a routing instance repeat `instance+.@name`, so
+converting the workbook back to YAML keeps each protocol under its named instance.
+Dictionary containers such as `protocols.ospf` remain dictionaries, not lists.
+Regenerate existing workbooks from the original YAML if their nested rows are
+missing parent identifiers or protocol data; this fix does not repair previously
+exported workbooks.
+
 ## Converting from Excel to YAML
 
 To convert a Microsoft Excel spreadsheet to YAML format you will first need to create a spreadsheet. There are a few things to be aware of with regards to the format of your spreadsheet:
@@ -43,6 +51,16 @@ To convert a Microsoft Excel spreadsheet to YAML format you will first need to c
 - **Column A must be called "host"**. This refers to the destination YAML file where data will be written to.
 - A sheet named `base` is special, and must have three columns (A, B, C) named `host`, `name` and `value`
 - Any other sheet can have as many columns as you need, called whatever you want
+
+Blank cells are omitted before nested column paths are reconstructed. For example,
+a blank `forwarding_table.chained_composite_next_hop.ingress.evpn` cell does not
+create an empty next-hop container for that row's host. Other hosts' supplied
+values remain independent. Explicit `false`, `0`, and the existing `"None"`
+null/presence-leaf representation retain their previous behavior.
+
+Applications importing workbooks must install this updated converter; replacing
+a workbook does not update an application's installed Python dependency. Existing
+workbooks with blank cells can be reconverted without deleting their columns.
 
 To convert a spreadsheet into a YAML file, the format of the command is this:
 
